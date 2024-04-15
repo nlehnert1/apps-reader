@@ -8,9 +8,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A1B47A5-047B-4CFB-9FCC-AB6B6800C12E}"
 	ProjectSection(SolutionItems) = preProject
 		config.txt = config.txt
+		SchemaSetupDDL.sql = SchemaSetupDDL.sql
+		SeedData.sql = SeedData.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniusReader.Domain", "GeniusReader.Domain\GeniusReader.Domain.csproj", "{C1DB767F-43B3-49A7-9264-B83169528354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeniusReader.Domain", "GeniusReader.Domain\GeniusReader.Domain.csproj", "{C1DB767F-43B3-49A7-9264-B83169528354}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
