@@ -14,4 +14,9 @@
     <ProjectReference Include="..\GeniusReader.Domain\GeniusReader.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="DTOs\" />
+  </ItemGroup>
+
 </Project>

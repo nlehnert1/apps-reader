@@ -1,4 +1,4 @@
-﻿namespace GeniusReader.WebApp.DTOs
+﻿namespace GeniusReader.WebApp.Features.Test.Shared
 {
     public class TestEntityDto
     {

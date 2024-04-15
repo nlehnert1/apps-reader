@@ -1,10 +1,10 @@
 ﻿using GeniusReader.Domain.EFModel;
 using Microsoft.EntityFrameworkCore;
 
-public class TestContext : DbContext
+public class ReaderContext : DbContext
 {
 
-    public TestContext(DbContextOptions<TestContext> options) : base(options)
+    public ReaderContext(DbContextOptions<ReaderContext> options) : base(options)
     {
     }
 
