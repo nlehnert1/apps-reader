@@ -1,8 +1,9 @@
+using Applications.GenuisReader;
 using GeniusReader.Domain.EFModel;
-using GeniusReader.WebApp.DTOs;
+using GeniusReader.WebApp.Features.Test.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Applications.GenuisReader.Controllers
+namespace GeniusReader.WebApp.Features.Test
 {
     [ApiController]
     [Route("[controller]")]
@@ -11,8 +12,8 @@ namespace Applications.GenuisReader.Controllers
         private ReaderContext _testContext;
         public WeatherForecastController(ReaderContext testContext, ILogger<WeatherForecastController> logger)
         {
-            this._testContext = testContext;
-            this._logger = logger;
+            _testContext = testContext;
+            _logger = logger;
         }
 
         private static readonly string[] Summaries = new[]
@@ -37,7 +38,8 @@ namespace Applications.GenuisReader.Controllers
         [HttpGet("Test")]
         public IEnumerable<TestEntityDto> GetTestData()
         {
-            var testEntities = _testContext.TestEntity.Select(x => new TestEntityDto {
+            var testEntities = _testContext.TestEntity.Select(x => new TestEntityDto
+            {
                 Id = x.TestId,
                 Contents = x.Contents,
             });
