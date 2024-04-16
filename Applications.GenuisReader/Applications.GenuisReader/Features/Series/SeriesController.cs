@@ -17,7 +17,7 @@ namespace GeniusReader.WebApp.Features.Series
         }
 
         [HttpGet("Summaries")]
-        public async Task<List<SeriesDto>> GetSeriesSummaries([FromRoute] GetSeriesSummariesQuery request)
+        public async Task<List<SeriesDto>> GetSeriesSummaries([FromQuery] GetSeriesSummariesQuery request)
             => await _mediator.Send(request);
 
     }

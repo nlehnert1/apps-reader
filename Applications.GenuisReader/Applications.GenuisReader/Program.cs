@@ -10,8 +10,8 @@ namespace Applications.GenuisReader
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<TestContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("TestContext")));
+            builder.Services.AddDbContext<ReaderContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ReaderContext")));
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

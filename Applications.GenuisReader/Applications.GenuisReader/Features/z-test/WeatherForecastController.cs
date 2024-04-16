@@ -8,8 +8,8 @@ namespace Applications.GenuisReader.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private TestContext _testContext;
-        public WeatherForecastController(TestContext testContext, ILogger<WeatherForecastController> logger)
+        private ReaderContext _testContext;
+        public WeatherForecastController(ReaderContext testContext, ILogger<WeatherForecastController> logger)
         {
             this._testContext = testContext;
             this._logger = logger;
