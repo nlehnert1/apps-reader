@@ -7,6 +7,6 @@ namespace GeniusReader.Domain.EFModel
     {
         [Key]
         public int TestId { get; set; }
-        public string? Contents { get; set; }
+        public string Contents { get; set; }
     }
 }
