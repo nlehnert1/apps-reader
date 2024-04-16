@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace GeniusReader.WebApp.Features.Series.Shared
+﻿namespace GeniusReader.WebApp.Features.Series.Shared
 {
     public class AuthorOfSeriesDto
     {

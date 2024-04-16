@@ -6,7 +6,6 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary
 {
     public class GetSeriesSummariesQuery : IRequest<List<SeriesDto>>
     {
-
         internal sealed class Handler : IRequestHandler<GetSeriesSummariesQuery, List<SeriesDto>>
         {
             private ReaderContext _readerContext;

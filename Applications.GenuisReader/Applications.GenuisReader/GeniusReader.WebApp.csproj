@@ -16,8 +16,4 @@
     <ProjectReference Include="..\GeniusReader.Domain\GeniusReader.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Series\" />
-  </ItemGroup>
-
 </Project>
