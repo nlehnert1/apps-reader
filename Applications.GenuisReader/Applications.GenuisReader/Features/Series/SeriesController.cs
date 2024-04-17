@@ -1,4 +1,5 @@
-﻿using GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary;
+﻿using GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails;
+using GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary;
 using GeniusReader.WebApp.Features.Series.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,5 +21,8 @@ namespace GeniusReader.WebApp.Features.Series
         public async Task<List<SeriesDto>> GetSeriesSummaries([FromQuery] GetSeriesSummariesQuery request)
             => await _mediator.Send(request);
 
+        [HttpGet("Details/{SeriesId}")]
+        public async Task<SeriesDto> GetSeriesDetails([FromRoute] GetSeriesDetailsQuery request)
+           => await _mediator.Send(request);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using GeniusReader.WebApp.Features.Series.Shared;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary
 {
