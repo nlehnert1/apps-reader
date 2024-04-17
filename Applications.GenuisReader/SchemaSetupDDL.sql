@@ -5,9 +5,9 @@
 --);
 
 -- Clear out existing schema
-drop table AuthorWorks;
-drop table Series;
-drop table Author;
+drop table if exists AuthorWorks;
+drop table if exists Series;
+drop table if exists Author;
 
 -- Re-create schema
 Create table Author(

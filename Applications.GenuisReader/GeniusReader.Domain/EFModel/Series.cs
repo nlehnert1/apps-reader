@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeniusReader.Domain.EFModel
@@ -9,5 +10,9 @@ namespace GeniusReader.Domain.EFModel
         public int SeriesId { get; set; }
         public string Name { get; set; }
         public List<Author> Authors { get; set; }
+
+        public bool IsOngoing { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }
