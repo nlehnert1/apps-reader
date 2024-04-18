@@ -6,5 +6,5 @@ import { Component } from "@angular/core";
 
 })
 export class HomeComponent {
-    variableText = "Hello, Chloe!"
+    variableText = "Hello, World!"
 }
