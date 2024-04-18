@@ -1,8 +1,4 @@
-using GeniusReader.Domain.EFModel;
 using GeniusReader.WebApp;
-using GeniusReader.WebApp.Extensions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 
 namespace Applications.GenuisReader
 {

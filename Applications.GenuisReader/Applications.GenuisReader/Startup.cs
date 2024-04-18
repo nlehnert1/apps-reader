@@ -1,6 +1,7 @@
 ﻿using GeniusReader.WebApp.Extensions;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace GeniusReader.WebApp
 {
@@ -19,7 +20,10 @@ namespace GeniusReader.WebApp
             // Add services to the container.
             services.AddDbContext<ReaderContext>(options =>
                 options.UseSqlServer(configRoot.GetConnectionString("ReaderContext")));
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
