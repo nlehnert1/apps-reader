@@ -19,11 +19,16 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary
                 {
                     Title = s.Name,
                     SeriesId = s.SeriesId,
+                    IsOngoing = s.IsOngoing,
                     Authors = s.Authors.Select(a => new AuthorOfSeriesDto
                     {
                         FirstName = a.FirstName,
                         LastName = a.LastName,
                         AuthorId = a.AuthorId,
+                    }).ToList(),
+                    Tags = s.Tags.Select(t => new TagDto
+                    {
+                        Label = t.Label,
                     }).ToList(),
                 }).ToList();
                 return Task.FromResult(series);

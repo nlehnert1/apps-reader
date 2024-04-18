@@ -22,7 +22,7 @@ namespace GeniusReader.WebApp.Features.Series
             => await _mediator.Send(request);
 
         [HttpGet("Details/{SeriesId}")]
-        public async Task<SeriesDto> GetSeriesDetails([FromRoute] GetSeriesDetailsQuery request)
+        public async Task<SeriesDto?> GetSeriesDetails([FromRoute] GetSeriesDetailsQuery request)
            => await _mediator.Send(request);
     }
 }

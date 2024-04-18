@@ -5,19 +5,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails
 {
-    public class GetSeriesDetailsQuery : IRequest<SeriesDto>
+    public class GetSeriesDetailsQuery : IRequest<SeriesDto?>
     {
         [FromRoute(Name = "SeriesId")]
         public int SeriesId { get; set; }
 
-        internal sealed class Handler : IRequestHandler<GetSeriesDetailsQuery, SeriesDto>
+        internal sealed class Handler : IRequestHandler<GetSeriesDetailsQuery, SeriesDto?>
         {
             private ReaderContext _readerContext;
             public Handler(ReaderContext readerContext)
             {
                 _readerContext = readerContext;
             }
-            public Task<SeriesDto> Handle(GetSeriesDetailsQuery request, CancellationToken cancellationToken)
+            public Task<SeriesDto?> Handle(GetSeriesDetailsQuery request, CancellationToken cancellationToken)
             {
                 var result = _readerContext.Series.Select(s => new SeriesDto
                 {
@@ -31,8 +31,20 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails
                         AuthorId = a.AuthorId,
                     }).ToList(),
                     SeriesId = s.SeriesId,
-                    Title = s.Name
-                }).Where(s => s.SeriesId == request.SeriesId).First();
+                    Title = s.Name,
+                    Tags = s.Tags.Select(t => new TagDto
+                    {
+                        Label = t.Label,
+                    }).ToList(),
+                    Chapters = s.Chapters.Select(c => new ChapterDto
+                    {
+                        ChapterId = c.ChapterId,
+                        Title = c.ChapterTitle,
+                        Tags = c.Tags.Select(t => new TagDto {
+                            Label = t.Label
+                        }).ToList(),
+                    }).ToList(),
+                }).Where(s => s.SeriesId == request.SeriesId).FirstOrDefault();
 
                 return Task.FromResult(result);
             }

@@ -1,0 +1,18 @@
+<h2><i>{{selectedSeries.title}}</i> Details:</h2>
+<div><b>Title:</b> {{selectedSeries.title}}</div>
+<div><b>Authors:</b> {{getFormattedAuthorStrings()}}</div>
+<div><b>Is Ongoing:</b> {{selectedSeries.isOngoing}}</div>
+<div><b>Tags:</b> {{getTagsList()}}</div>
+<div class="table-container">
+    <b>Chapters:</b>
+    <table>
+        <tr>
+            <th>Chapter Name</th>
+            <th>Additional Tags</th>
+        </tr>
+        <tr *ngFor="let chapter of selectedSeries.chapters">
+            <td>{{chapter.title}}</td>
+            <td>{{getChapterTags(chapter.chapterId)}}</td>
+        </tr>
+    </table>
+</div>
