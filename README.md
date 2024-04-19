@@ -1,6 +1,5 @@
-# apps-reader <!-- omit in toc -->
-The project containing the gateway and frontend for the web reader
-## Table of Contents <!-- omit in toc -->
+# Genius Reader <!-- omit in toc -->
+The sarcastically-named long term personal project to mimic a manga reader site
 - [Setup](#setup)
   - [Software to install](#software-to-install)
   - [Visual Studio Setup](#visual-studio-setup)
