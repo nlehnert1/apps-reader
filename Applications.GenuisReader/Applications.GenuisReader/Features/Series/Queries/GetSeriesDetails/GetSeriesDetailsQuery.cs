@@ -1,23 +1,25 @@
-﻿using GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary;
+﻿using FluentResults;
+using GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary;
 using GeniusReader.WebApp.Features.Series.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails
 {
-    public class GetSeriesDetailsQuery : IRequest<SeriesDto?>
+    public class GetSeriesDetailsQuery : IRequest<Result<SeriesDto>>
     {
         [FromRoute(Name = "SeriesId")]
         public int SeriesId { get; set; }
 
-        internal sealed class Handler : IRequestHandler<GetSeriesDetailsQuery, SeriesDto?>
+        internal sealed class Handler : IRequestHandler<GetSeriesDetailsQuery, Result<SeriesDto>>
         {
             private ReaderContext _readerContext;
             public Handler(ReaderContext readerContext)
             {
                 _readerContext = readerContext;
             }
-            public Task<SeriesDto?> Handle(GetSeriesDetailsQuery request, CancellationToken cancellationToken)
+            public async Task<Result<SeriesDto>> Handle(GetSeriesDetailsQuery request, CancellationToken cancellationToken)
             {
                 var result = _readerContext.Series.Select(s => new SeriesDto
                 {
@@ -45,8 +47,13 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails
                         }).ToList(),
                     }).ToList(),
                 }).Where(s => s.SeriesId == request.SeriesId).FirstOrDefault();
+                if(result == null)
+                {
+                    var resultObj = Result.Fail($"No series found with ID {request.SeriesId}");
+                    return await Task.FromResult(resultObj);
+                }
 
-                return Task.FromResult(result);
+                return await Task.FromResult(Result.Ok(result));
             }
         }
     }

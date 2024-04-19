@@ -1,4 +1,7 @@
-﻿using GeniusReader.WebApp.Extensions;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using GeniusReader.WebApp.Extensions;
+using GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -24,6 +27,10 @@ namespace GeniusReader.WebApp
             {
                 options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             });
+
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining<GetSeriesDetailsQueryValidator>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
