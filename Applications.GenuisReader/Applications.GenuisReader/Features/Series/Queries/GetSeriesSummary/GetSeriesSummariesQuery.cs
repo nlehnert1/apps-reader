@@ -1,11 +1,12 @@
-﻿using GeniusReader.WebApp.Features.Series.Shared;
+﻿using FluentResults;
+using GeniusReader.WebApp.Features.Series.Shared;
 using MediatR;
 
 namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary
 {
-    public class GetSeriesSummariesQuery : IRequest<List<SeriesDto>>
+    public class GetSeriesSummariesQuery : IRequest<Result<List<SeriesDto>>>
     {
-        internal sealed class Handler : IRequestHandler<GetSeriesSummariesQuery, List<SeriesDto>>
+        internal sealed class Handler : IRequestHandler<GetSeriesSummariesQuery, Result<List<SeriesDto>>>
         {
             private ReaderContext _readerContext;
             public Handler(ReaderContext readerContext)
@@ -13,7 +14,7 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary
                 _readerContext = readerContext;
             }
 
-            public Task<List<SeriesDto>> Handle(GetSeriesSummariesQuery request, CancellationToken cancellationToken)
+            public async Task<Result<List<SeriesDto>>> Handle(GetSeriesSummariesQuery request, CancellationToken cancellationToken)
             {
                 var series = _readerContext.Series.Select(s => new SeriesDto
                 {
@@ -31,7 +32,7 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary
                         Label = t.Label,
                     }).ToList(),
                 }).ToList();
-                return Task.FromResult(series);
+                return await Task.FromResult(Result.Ok(series));
             }
         }
     }
