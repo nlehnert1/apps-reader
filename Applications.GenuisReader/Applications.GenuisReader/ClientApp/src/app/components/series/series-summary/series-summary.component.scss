@@ -9,9 +9,14 @@ td.ongoing-column {
 
 th {
     text-align: left;
+    padding: 3px;
 }
 
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+button {
+    margin: 3px;
 }

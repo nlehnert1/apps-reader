@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { SeriesService } from "../../services/series.service";
-import { Series } from "../../models/series";
+import { SeriesService } from "../../../services/series.service";
+import { Series } from "../../../models/series";
 
 @Component({
     selector: 'series-summary',
@@ -9,11 +9,15 @@ import { Series } from "../../models/series";
 })
 export class SeriesSummaryComponent implements OnInit {
     series: Series[] = [];
+    hasSeriesSelected: Boolean = false;
     constructor(public seriesService: SeriesService) { }
     ngOnInit() {
         this.seriesService.getSeriesSummaries().subscribe(resp => {
             this.series = resp
         });
+        this.seriesService.selectedSeriesId.subscribe(newValue => {
+            this.hasSeriesSelected = newValue > 0;
+        })
     }
 
     public getFormattedAuthorStrings(series: Series) : String {
@@ -22,7 +26,7 @@ export class SeriesSummaryComponent implements OnInit {
         return fullNameArray.join(', ');
     }
 
-    onSelectSeries(seriesId: Number) {
+    onSelectSeries(seriesId: number) {
         console.log('Hit "OnSelectSeries" for seriesId:', seriesId);
         this.seriesService.selectedSeriesId.next(seriesId);
     }

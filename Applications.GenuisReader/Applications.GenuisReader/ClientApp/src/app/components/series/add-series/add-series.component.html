@@ -1,0 +1,28 @@
+<div class="back-container">
+    <button mat-stroked-button color="accent" routerLink="../">
+        <img class="back-arrow-img" src="../../../../assets/arrow_back_FILL0_wght400_GRAD0_opsz24.png" alt="back_button">
+        <span class="back-arrow">Back</span>
+    </button>
+</div>
+<div class="form-container">
+    <mat-card>
+        <mat-card-header>Add Series</mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="outline">
+                <mat-label>Series Title</mat-label>
+                <input matInput type="text" placeholder="Enter series title..." [formControl]="titleFormControl" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Start Date</mat-label>
+                <input matInput type="date" [formControl]="startDateControl" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>End Date</mat-label>
+                <input matInput type="date" [formControl]="endDateControl">
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="accent">Add</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

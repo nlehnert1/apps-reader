@@ -5,7 +5,7 @@
 <div><b>Tags:</b> {{getTagsList()}}</div>
 <div class="table-container">
     <b>Chapters:</b>
-    <table>
+    <table *ngIf="selectedSeries.chapters.length > 0">
         <tr>
             <th>Chapter Name</th>
             <th>Additional Tags</th>

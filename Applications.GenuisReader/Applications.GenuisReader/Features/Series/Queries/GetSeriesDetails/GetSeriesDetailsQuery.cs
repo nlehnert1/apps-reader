@@ -1,9 +1,7 @@
 ﻿using FluentResults;
-using GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary;
 using GeniusReader.WebApp.Features.Series.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails
 {

@@ -1,0 +1,31 @@
+<h2>Series</h2>
+<mat-card>
+    <mat-card-header>Currently in database:</mat-card-header>
+    <mat-card-content>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author(s)</th>
+                <th>Ongoing</th>
+                <th>Details</th>
+            </tr>
+            <tr *ngFor="let story of series">
+                <td>{{story.title}}</td>
+                <td>{{getFormattedAuthorStrings(story)}}</td>
+                <td class="ongoing-column">{{story.isOngoing ? "Yes" : "No"}}</td>
+                <td><button mat-flat-button color="accent" (click)="onSelectSeries(story.seriesId)">See Details</button></td>
+            </tr>
+        </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <button 
+        mat-stroked-button
+        color="accent"
+        routerLink="add"
+        routerLinkActive="activeButton"
+        ariaCurrentWhenActive="page"
+        >Add Series
+        </button>
+    </mat-card-actions>
+</mat-card>
+<series-detail *ngIf="hasSeriesSelected"></series-detail>

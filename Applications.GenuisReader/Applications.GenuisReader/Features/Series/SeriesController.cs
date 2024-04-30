@@ -12,7 +12,7 @@ namespace GeniusReader.WebApp.Features.Series
     [Route("api/[controller]")]
     public class SeriesController : ControllerBase
     {
-        private IMediator _mediator;
+        private readonly IMediator _mediator;
 
         public SeriesController(IMediator mediator)
         {
@@ -20,8 +20,8 @@ namespace GeniusReader.WebApp.Features.Series
         }
 
         [HttpGet("Summaries")]
-        public async Task<Result<List<SeriesDto>>> GetSeriesSummaries([FromQuery] GetSeriesSummariesQuery request)
-            => await _mediator.Send(request);
+        public async Task<ActionResult<List<SeriesDto>>> GetSeriesSummaries([FromQuery] GetSeriesSummariesQuery request)
+            => await _mediator.Send(request).ToActionResult();
 
         [HttpGet("Details/{SeriesId}")]
         public async Task<ActionResult<SeriesDto>> GetSeriesDetails([FromRoute] GetSeriesDetailsQuery request)

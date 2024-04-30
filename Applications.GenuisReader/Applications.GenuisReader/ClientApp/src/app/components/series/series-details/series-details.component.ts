@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { SeriesService } from "../../services/series.service";
-import { Series, blankSeries } from "../../models/series";
+import { SeriesService } from "../../../services/series.service";
+import { Series, blankSeries } from "../../../models/series";
 
 @Component({
     selector: 'series-detail',

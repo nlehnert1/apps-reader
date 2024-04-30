@@ -6,7 +6,7 @@ import { Series } from "../models/series";
 @Injectable()
 export class SeriesService {
     http: HttpClient;
-    selectedSeriesId: BehaviorSubject<Number> = new BehaviorSubject<Number>(0);
+    selectedSeriesId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
     constructor(http: HttpClient) {
         this.http = http;
      }
