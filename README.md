@@ -1,6 +1,5 @@
-# apps-reader <!-- omit in toc -->
-The project containing the gateway and frontend for the web reader
-## Table of Contents <!-- omit in toc -->
+# Genius Reader <!-- omit in toc -->
+The sarcastically-named long term personal project to mimic a manga reader site
 - [Setup](#setup)
   - [Software to install](#software-to-install)
   - [Visual Studio Setup](#visual-studio-setup)
@@ -81,6 +80,7 @@ When working on this project, it will be helpful for everyone to be working from
 2. Navigate to the ClientApp folder in VSCode and run `npm run start`. This will build application bundles, and should produce a link once it has finished. Ctrl+click the link, or open a browser yourself and navigate to http://localhost:4200, and you should be able to see the landing page.
 
 ## Work to do
+
 1. Add more controllers and endpoints (add chapter, add series, add tags to series/chapter, etc)
 2. Figure out actual file storage solution (read/write .png or .jpg files directly to/from machine in the mean time?)
 3. Add accounts/Identity
