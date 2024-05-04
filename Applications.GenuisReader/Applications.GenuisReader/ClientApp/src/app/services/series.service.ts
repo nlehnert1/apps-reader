@@ -6,7 +6,7 @@ import { Series } from "../models/series";
 @Injectable()
 export class SeriesService {
     http: HttpClient;
-    selectedSeriesId: BehaviorSubject<Number> = new BehaviorSubject<Number>(0);
+    selectedSeriesId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
     constructor(http: HttpClient) {
         this.http = http;
      }
@@ -18,6 +18,10 @@ export class SeriesService {
     }
 
     getSeriesDetails(seriesId: Number) : Observable<Series> {
-        return this.http.get<Series>(this.api_url + `/Details/${seriesId}`)
+        return this.http.get<Series>(this.api_url + `/Details/${seriesId}`);
+    }
+
+    addSeries(series: Series) : Observable<Series> {
+        return this.http.post<Series>(this.api_url + '/AddNew', series);
     }
 }

@@ -7,6 +7,9 @@ The sarcastically-named long term personal project to mimic a manga reader site
   - [SQL Server Setup and SSMS Setup](#sql-server-setup-and-ssms-setup)
   - [Angular Setup](#angular-setup)
 - [Running project](#running-project)
+  - [Database](#database)
+    - [Import](#import)
+    - [Export](#export)
   - [API](#api)
   - [Angular](#angular)
 - [Work to do](#work-to-do)
@@ -42,19 +45,42 @@ The sarcastically-named long term personal project to mimic a manga reader site
 4. Run `npm install`, and wait for it to install all of the packages on your machine
 
 ## Running project
-### API
+### Database
+When working on this project, it will be helpful for everyone to be working from the same set of data. Rather than manually write up and maintain scripts to drop, recreate, and repopulate our schema every time a change is made, for now we will instead be making use of database backups. When pulling down new work, please make sure to restore from the latest backup (included in the repo). See the [Import](#import) section below.
+
+ If you push work that involved modifying schema or adding more data to the database, MAKE SURE THAT THE DATA IS VALID (no orphaned records, no duplicate records unless intentional, no unused columns, etc.) and then export your data to a new backup and commit it. See the [Export](#export) section below.
+#### Import
 1. Clone repo from https://github.com/nlehnert1/apps-reader
-2. Open SSMS and connect to database
-3. In SSMS, open and run SchemaSetupDLL.sql
-4. In SSMS, open and run SeedData.sql
-5. Open solution in Visual Studio 2022
+2. Copy the file `Applications.GeniusReader/CopyOfMasterDb.bak` into a location on your machine that SSMS will have permissions to read/restore from. By default, this should be something like `C:/Program Files/Microsoft SQL Server/MSSQL16.MSSQLSERVER/MSSQL/Backup/`.
+3. In SSMS, expand the Object explorer, and underneath the root of the connection, right click on Databases and select "Restore Database".
+4. Select Device:, and then select the ellipses (...) to locate your backup file.
+5. Select Add and navigate to where your .bak file is located. Select the .bak file and then select OK.
+6. Select OK to close the Select backup devices dialog box.
+7. Select OK to restore the backup of your database.
+
+#### Export
+1. In the process of working on the project, make changes to the schema or data contained within the database
+2. BEFORE BACKING UP, VERIFY THE FOLLOWING:
+   1. There are no orphaned records in the database, and all foreign key relationships are correct
+   2. There are no duplicate records (unless intentionally added to test filtering logic of an endpoint)
+   3. There are no unused columns in the schema
+3. Right click the database you have been using > Tasks > Export Data
+4. Under Destination, confirm that the path for your backup is correct. If you need to change the path, select Remove to remove the existing path, and then Add to type in a new path. You can use the ellipses to navigate to a specific file.
+   1. You probably don't have permission to write the backup directly to the repo location. Looking into how to get around that, but for now, just make note of the default path and use it
+5. Select OK to take a backup of your database.
+6. Make sure the database has a .bak extension (rename it if necessary)
+7. Copy the file to the repo, check it in, and commit it.
+
+### API
+1. Open solution in Visual Studio 2022
 6. Run project to pull up Swagger for endpoints
 
 ### Angular
-1. Make sure the API is already running. While the API isn't strictly necessary for Angular itself to do anything, we are not using Service Fabric or anything like that, so you need to be actively debugging the app in Visual Studio for service calls to have anything to hit.
-2. Navigate to the ClientApp folder and run `npm run start`. This will build application bundles, and should produce a link once it has finished. Ctrl+click the link, or open a browser yourself and navigate to http://localhost:4200, and you should be able to see the landing page.
+1. Make sure the API is already running. While the API isn't strictly necessary for Angular itself to do anything, we are not using Service Fabric or anything like that to host the API while not actively dubgging it, so you need to be actively debugging the app in Visual Studio for service calls to have anything to hit.
+2. Navigate to the ClientApp folder in VSCode and run `npm run start`. This will build application bundles, and should produce a link once it has finished. Ctrl+click the link, or open a browser yourself and navigate to http://localhost:4200, and you should be able to see the landing page.
 
 ## Work to do
-1. Add Angular to project
-2. Create Angular Frontend
-3. Flesh out endpoints
+
+1. Add more controllers and endpoints (add chapter, add series, add tags to series/chapter, etc)
+2. Figure out actual file storage solution (read/write .png or .jpg files directly to/from machine in the mean time?)
+3. Add accounts/Identity

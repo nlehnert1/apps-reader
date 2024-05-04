@@ -14,6 +14,8 @@ namespace Applications.GenuisReader
                     policy =>
                     {
                         policy.WithOrigins("http://localhost:4200", "https://localhost:4200");
+                        policy.WithHeaders("content-type");
+                        policy.WithMethods("GET", "POST", "PUT");
                     });
             });
             // Add services to the container.

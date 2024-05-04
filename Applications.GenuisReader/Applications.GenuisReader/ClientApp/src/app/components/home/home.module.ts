@@ -3,13 +3,15 @@ import { HomeComponent } from "./home.component";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { SeriesService } from "../../services/series.service";
-import { SeriesSummaryModule } from "../series-summary/series-summary.module";
-import { SeriesDetailsModule } from "../series-details/series-details.module";
+import { SeriesSummaryModule } from "../series/series-summary/series-summary.module";
+import { SeriesDetailsModule } from "../series/series-details/series-details.module";
+import { RouterLink } from "@angular/router";
+import { TagService } from "../../services/tag.service";
 
 @NgModule({
-    imports: [CommonModule, HttpClientModule, SeriesSummaryModule, SeriesDetailsModule],
+    imports: [CommonModule, HttpClientModule, SeriesSummaryModule, SeriesDetailsModule, RouterLink],
     declarations: [ HomeComponent ],
     exports: [ HomeComponent ],
-    providers: [SeriesService]
+    providers: [SeriesService, TagService]
 })
 export class HomeModule { }

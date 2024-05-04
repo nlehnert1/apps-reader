@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using FluentResults.Extensions.AspNetCore;
+using GeniusReader.WebApp.Features.Series.Commands.AddSeries;
 using GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails;
 using GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary;
 using GeniusReader.WebApp.Features.Series.Shared;
@@ -12,7 +13,7 @@ namespace GeniusReader.WebApp.Features.Series
     [Route("api/[controller]")]
     public class SeriesController : ControllerBase
     {
-        private IMediator _mediator;
+        private readonly IMediator _mediator;
 
         public SeriesController(IMediator mediator)
         {
@@ -20,11 +21,15 @@ namespace GeniusReader.WebApp.Features.Series
         }
 
         [HttpGet("Summaries")]
-        public async Task<Result<List<SeriesDto>>> GetSeriesSummaries([FromQuery] GetSeriesSummariesQuery request)
-            => await _mediator.Send(request);
+        public async Task<ActionResult<List<SeriesDto>>> GetSeriesSummaries([FromQuery] GetSeriesSummariesQuery request)
+            => await _mediator.Send(request).ToActionResult();
 
         [HttpGet("Details/{SeriesId}")]
         public async Task<ActionResult<SeriesDto>> GetSeriesDetails([FromRoute] GetSeriesDetailsQuery request)
            => await _mediator.Send(request).ToActionResult();
+
+        [HttpPost("AddNew")]
+        public async Task<ActionResult<SeriesDto>> AddNewSeries([FromBody] AddSeriesCommand request)
+             => await _mediator.Send(request).ToActionResult();
     }
 }
