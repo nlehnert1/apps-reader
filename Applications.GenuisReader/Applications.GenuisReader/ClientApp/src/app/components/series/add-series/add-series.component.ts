@@ -6,21 +6,12 @@ import { SeriesService } from "../../../services/series.service";
 import { TagService } from "../../../services/tag.service";
 import { Tag } from "../../../models/tag";
 
-interface AuthorForm {
-    firstName: FormControl<string>,
-    lastName: FormControl<string>
-}
-interface SeriesForm {
-    title: FormControl<string>,
-    authors: FormGroup<AuthorForm>
-}
-
 @Component({
     selector: 'add-series',
     templateUrl: './add-series.component.html',
     styleUrl: './add-series.component.scss'
 })
-export class AddSeriesComponent implements OnInit, OnChanges{
+export class AddSeriesComponent implements OnInit{
     titleFormControl!: FormControl;
     startDateControl!: FormControl;
     endDateControl!: FormControl<Date|null>;
@@ -28,6 +19,12 @@ export class AddSeriesComponent implements OnInit, OnChanges{
     givenNameControl!: FormControl;
     selectedTags!: Tag[];
     ableToSubmit!: boolean;
+    hasAtLeastOneTag!: boolean;
+    hasValidAuthor!: boolean;
+    hasValidStartDate!: boolean;
+    hasValidTitle!: boolean;
+    submitValidationMessage!: string;
+    submittedSeries!: Series|null;
 
     constructor(public seriesService: SeriesService) { }
 
@@ -39,15 +36,12 @@ export class AddSeriesComponent implements OnInit, OnChanges{
         this.givenNameControl = new FormControl<string>('');
         this.selectedTags = [];
         this.ableToSubmit = false;
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log("touched OnChanges");
-        const hasValidTitle = this.titleFormControl.value !== '';
-        const hasValidStartDate = this.startDateControl.value !== null;
-        const hasValidAuthor = this.familyNameControl.value !== '';
-        const hasAtLeastOneTag = this.selectedTags.length >= 1;
-        this.ableToSubmit = hasAtLeastOneTag && hasValidAuthor && hasValidStartDate && hasValidTitle;
+        this.hasAtLeastOneTag = false;
+        this.hasValidAuthor = false;
+        this.hasValidStartDate = false;
+        this.hasValidTitle = false;
+        this.submitValidationMessage = '';
+        this.submittedSeries = null;
     }
 
     updateTags(tag: Tag) {
@@ -61,6 +55,17 @@ export class AddSeriesComponent implements OnInit, OnChanges{
     }
 
     saveSeries(): void {
+        this.hasValidTitle = this.titleFormControl.value !== '';
+        this.hasValidStartDate = this.startDateControl.value !== null;
+        this.hasValidAuthor = this.familyNameControl.value !== '';
+        this.hasAtLeastOneTag = this.selectedTags.length >= 1;
+        if(!(this.hasAtLeastOneTag && this.hasValidAuthor && this.hasValidTitle && this.hasValidStartDate)) {
+            this.submitValidationMessage = "Error: Could not submit. Series must have at least one tag, a valid author, a valid title, and a valid start date.";
+            return;
+        } else {
+            this.submitValidationMessage = '';
+        }
+
         const seriesToSave = {
             title: this.titleFormControl.value,
             startDate: this.startDateControl.value,
@@ -68,5 +73,17 @@ export class AddSeriesComponent implements OnInit, OnChanges{
             authors: [{firstName: this.givenNameControl.value, lastName: this.familyNameControl.value}] as Author[],
             tags: this.selectedTags,
         } as Series;
-    } 
+
+        console.log(seriesToSave);
+
+        this.seriesService.addSeries(seriesToSave).subscribe(resp => {
+            this.submittedSeries = resp;
+        })
+    }
+
+    public getTagsList() : String {
+        let tagsList: String[] = [];
+        this.submittedSeries?.tags.forEach(t => tagsList.push(t.label));
+        return tagsList.join(', ');
+    }
 }

@@ -47,7 +47,19 @@
             </mat-card>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-flat-button color="accent" [disabled]="!ableToSubmit">Add</button>
+            <span>
+                <button mat-flat-button color="accent" (click)="saveSeries()">Add</button>
+            </span>
         </mat-card-actions>
     </mat-card>
+</div>
+<div>{{submitValidationMessage}}</div>
+<br/>
+<br/>
+<div *ngIf="submittedSeries">
+    <h2><i>{{submittedSeries.title}}</i> Details:</h2>
+    <div><b>Title:</b> {{submittedSeries.title}}</div>
+    <div><b>Author:</b> {{submittedSeries.authors[0].firstName + ' ' + submittedSeries.authors[0].lastName}}</div>
+    <div><b>Is Ongoing:</b> {{submittedSeries.isOngoing}}</div>
+    <div><b>Tags:</b> {{getTagsList()}}</div>
 </div>
