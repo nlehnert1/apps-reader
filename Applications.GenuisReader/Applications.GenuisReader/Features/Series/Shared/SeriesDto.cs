@@ -3,7 +3,7 @@
     public class SeriesDto
     {
         public int SeriesId { get; set; }
-        public string? Title { get; set; }
+        public string Title { get; set; }
         public List<AuthorOfSeriesDto> Authors { get; set; } = new List<AuthorOfSeriesDto>();
         public List<TagDto> Tags { get; set; }
         public bool IsOngoing { get; set; }

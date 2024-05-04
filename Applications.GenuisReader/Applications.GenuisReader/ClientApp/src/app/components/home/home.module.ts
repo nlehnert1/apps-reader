@@ -6,11 +6,12 @@ import { SeriesService } from "../../services/series.service";
 import { SeriesSummaryModule } from "../series/series-summary/series-summary.module";
 import { SeriesDetailsModule } from "../series/series-details/series-details.module";
 import { RouterLink } from "@angular/router";
+import { TagService } from "../../services/tag.service";
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, SeriesSummaryModule, SeriesDetailsModule, RouterLink],
     declarations: [ HomeComponent ],
     exports: [ HomeComponent ],
-    providers: [SeriesService]
+    providers: [SeriesService, TagService]
 })
 export class HomeModule { }

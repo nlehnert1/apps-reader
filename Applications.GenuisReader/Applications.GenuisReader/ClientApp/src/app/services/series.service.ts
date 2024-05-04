@@ -18,6 +18,10 @@ export class SeriesService {
     }
 
     getSeriesDetails(seriesId: Number) : Observable<Series> {
-        return this.http.get<Series>(this.api_url + `/Details/${seriesId}`)
+        return this.http.get<Series>(this.api_url + `/Details/${seriesId}`);
+    }
+
+    addSeries(series: Series) : Observable<Series> {
+        return this.http.post<Series>(this.api_url + '/AddNew', series);
     }
 }

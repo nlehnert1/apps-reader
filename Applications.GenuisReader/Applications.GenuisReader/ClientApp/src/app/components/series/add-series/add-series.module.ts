@@ -7,17 +7,19 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { RouterLink } from "@angular/router";
+import { TagModule } from "../../tag/tag.module";
 
 @NgModule({
     imports: [
-        FormsModule, 
-        CommonModule, 
-        MatButtonModule, 
-        MatCardModule, 
-        RouterLink, 
-        ReactiveFormsModule, 
-        MatFormFieldModule, 
+        FormsModule,
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        RouterLink,
+        ReactiveFormsModule,
+        MatFormFieldModule,
         MatInputModule,
+        TagModule,
     ],
     declarations: [AddSeriesComponent],
     exports: [AddSeriesComponent],

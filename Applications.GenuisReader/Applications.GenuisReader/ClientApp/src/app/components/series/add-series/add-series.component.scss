@@ -9,3 +9,23 @@
 .back-container {
     margin-left: 10px;
 }
+
+mat-card-header {
+    padding-bottom: 2px;
+}
+
+mat-card {
+    margin: 5px;
+    outline: #FF8FAB solid 1px;
+    background-color: #FFC2D1;
+}
+
+mat-form-field {
+    padding: 5px;
+}
+span#tag-holder {
+    width: 50%;
+}
+span#selected-tags {
+    width: 50%;
+}
