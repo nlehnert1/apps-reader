@@ -23,9 +23,11 @@ mat-card {
 mat-form-field {
     padding: 5px;
 }
-span#tag-holder {
-    width: 50%;
+
+mat-form-field.highlight-my-child > div{
+    background-color: #FFE5EC !important;
 }
-span#selected-tags {
-    width: 50%;
+
+button#confirm-button {
+    margin-left: 12px;
 }

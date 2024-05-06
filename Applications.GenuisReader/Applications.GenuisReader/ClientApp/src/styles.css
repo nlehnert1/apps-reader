@@ -15,6 +15,16 @@ body {
   --shadow-color: #E8E8E8;
 }
 
+.pink-backgrounded-field .mdc-text-field--outlined .mdc-notched-outline {
+  z-index: 0
+}
+
+.pink-backgrounded-field .mdc-notched-outline__notch,
+.pink-backgrounded-field .mdc-notched-outline__leading,
+.pink-backgrounded-field .mdc-notched-outline__trailing {
+  background-color: #FFE5EC;
+}
+
 /* button.primary {
   padding: 10px;
   border: solid 1px var(--primary-color);
