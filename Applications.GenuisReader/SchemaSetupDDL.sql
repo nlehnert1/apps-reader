@@ -24,7 +24,6 @@ Create table Author(
 create table Series (
 	SeriesId int IDENTITY(1,1) PRIMARY KEY,
 	Name NVARCHAR(1024) not null,
-	IsOngoing bit not null,
 	StartDate Date not null,
 	EndDate Date
 );
