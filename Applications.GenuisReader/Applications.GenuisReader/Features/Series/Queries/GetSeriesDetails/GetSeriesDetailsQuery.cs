@@ -21,7 +21,7 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails
             {
                 var result = _readerContext.Series.Select(s => new SeriesDto
                 {
-                    IsOngoing = s.IsOngoing,
+                    IsOngoing = s.EndDate == null,
                     StartDate = s.StartDate,
                     EndDate = s.EndDate,
                     Authors = s.Authors.Select(a => new AuthorOfSeriesDto

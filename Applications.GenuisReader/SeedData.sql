@@ -7,14 +7,14 @@ Insert into Author(FirstName, LastName) values
 (null, 'Hijiki');
 
 -- Populate series
-Insert into Series (Name, IsOngoing, StartDate, EndDate) values
-('Bloom Into You', 0, '2015-04-27', '2019-09-27'),
-('Riko & Haru & Irukawa Hot Springs', 0, '2013-04-17', '2018-01-13'),
-('Can''t Defy The Lonely Girl', 0, '2019-12-04', '2023-01-18'),
-('A Love Yet To Bloom', 1, '2022-09-23', null),
-('Contract Sisters', 1, '2022-04-17', null),
-('Our Yuri Started With Me Getting Rejected In A Dream', 1, '2022-04-24', null),
-('Adachi and Shimamura (Light Novel)', 1, '2019-04-17', null);
+Insert into Series (Name, StartDate, EndDate) values
+('Bloom Into You', '2015-04-27', '2019-09-27'),
+('Riko & Haru & Irukawa Hot Springs', '2013-04-17', '2018-01-13'),
+('Can''t Defy The Lonely Girl', '2019-12-04', '2023-01-18'),
+('A Love Yet To Bloom', '2022-09-23', null),
+('Contract Sisters', '2022-04-17', null),
+('Our Yuri Started With Me Getting Rejected In A Dream', '2022-04-24', null),
+('Adachi and Shimamura (Light Novel)', '2019-04-17', null);
 
 Insert into Chapter(ChapterTitle) values 
 ('Chapter 1: I Can''t Reach the Stars'),				-- 1

@@ -20,7 +20,7 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary
                 {
                     Title = s.Name,
                     SeriesId = s.SeriesId,
-                    IsOngoing = s.IsOngoing,
+                    IsOngoing = s.EndDate == null,
                     Authors = s.Authors.Select(a => new AuthorOfSeriesDto
                     {
                         FirstName = a.FirstName,
