@@ -65,7 +65,15 @@ namespace GeniusReader.WebApp.Features.Series.Commands.AddSeries
 
             private Author GetOrCreateAuthor(AuthorOfSeriesDto author, int seriesId)
             {
-                var authorToReturn = _readerContext.Authors.FirstOrDefault(a => a.LastName == author.LastName && (a.FirstName == null || a.FirstName == author.FirstName));
+                Author authorToReturn = null;
+                if (author.FirstName == null)
+                {
+                    authorToReturn = _readerContext.Authors.FirstOrDefault(a => a.LastName == author.LastName && a.FirstName == null);
+                }
+                else
+                {
+                    authorToReturn = _readerContext.Authors.FirstOrDefault(a => a.LastName == author.LastName && a.FirstName == author.FirstName);
+                }
                 if(authorToReturn == null)
                 {
                     authorToReturn = new Author
