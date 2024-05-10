@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { TagService } from "../../services/tag.service";
 import { Tag } from "../../models/tag";
 
@@ -9,6 +9,7 @@ import { Tag } from "../../models/tag";
 })
 export class TagComponent implements OnInit {
     allTags!: Tag[];
+    @Input() displaySensitiveTags: boolean = false;
     @Output() selectedTagsChangeEvent = new EventEmitter<Tag>();
     constructor(public tagService: TagService) {}
 

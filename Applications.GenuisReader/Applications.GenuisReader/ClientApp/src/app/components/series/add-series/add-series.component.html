@@ -39,10 +39,13 @@
                     </mat-form-field>
                 </mat-card-content>
             </mat-card>
-            <mat-card>
-                <mat-card-header>Tags</mat-card-header>
+            <mat-card >
+                <div class="flex-container">
+                    <mat-card-header class="tag-header">Tags</mat-card-header>
+                    <mat-slide-toggle labelPosition="before" [(ngModel)]="showSensitiveTags">Show sensitive tags</mat-slide-toggle>
+                </div>
                 <mat-card-content>
-                    <reader-tag-select (selectedTagsChangeEvent)="updateTags($event)"></reader-tag-select>
+                    <reader-tag-select [displaySensitiveTags]="showSensitiveTags" (selectedTagsChangeEvent)="updateTags($event)"></reader-tag-select>
                 </mat-card-content>
             </mat-card>
         </mat-card-content>

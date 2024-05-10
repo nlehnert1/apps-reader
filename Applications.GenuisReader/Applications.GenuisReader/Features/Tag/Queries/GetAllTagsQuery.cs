@@ -21,6 +21,7 @@ namespace GeniusReader.WebApp.Features.Tag.Queries
                     TagId = t.TagId,
                     Label = t.Label,
                     Description = t.Description,
+                    IsSensitive = t.IsSensitive ?? false,   // Assume tag isn't objectionable unless specified otherwise
                 }).OrderBy(t => t.Label).ToList();
                 return await Task.FromResult(Result.Ok(tags));
             }

@@ -1,5 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { Component, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { Series } from "../../../models/series";
 import { Author } from "../../../models/author";
 import { SeriesService } from "../../../services/series.service";
@@ -25,6 +25,7 @@ export class AddSeriesComponent implements OnInit{
     hasValidTitle!: boolean;
     submitValidationMessage!: string;
     submittedSeries!: Series|null;
+    showSensitiveTags: boolean = false;
 
     constructor(public seriesService: SeriesService) { }
 

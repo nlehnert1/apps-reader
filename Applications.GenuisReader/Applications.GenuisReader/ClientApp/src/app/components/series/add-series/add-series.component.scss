@@ -11,7 +11,7 @@
 }
 
 mat-card-header {
-    padding-bottom: 2px;
+    padding-bottom: 4px;
 }
 
 mat-card {
@@ -31,3 +31,20 @@ mat-form-field.highlight-my-child > div{
 button#confirm-button {
     margin-left: 12px;
 }
+
+div.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-slide-toggle {
+    padding: 10px;
+    
+}
+
+mat-card-header.tag-header {
+   padding-bottom: 16px;
+}
+

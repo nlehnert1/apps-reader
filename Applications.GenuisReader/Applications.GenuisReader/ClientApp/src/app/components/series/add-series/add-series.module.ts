@@ -8,6 +8,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { RouterLink } from "@angular/router";
 import { TagModule } from "../../tag/tag.module";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle"
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { TagModule } from "../../tag/tag.module";
         MatFormFieldModule,
         MatInputModule,
         TagModule,
+        MatSlideToggleModule
     ],
     declarations: [AddSeriesComponent],
     exports: [AddSeriesComponent],
