@@ -57,7 +57,8 @@ create table SeriesChapter (
 create table Tag (
 	TagId int identity(1,1) primary key,
 	Label nvarchar(50) not null,
-	Description nvarchar(1000)
+	Description nvarchar(1000),
+	IsSensitive bit
 );
 
 create table SeriesTag (
