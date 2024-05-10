@@ -11,7 +11,7 @@
 }
 
 mat-card-header {
-    padding-bottom: 2px;
+    padding-bottom: 4px;
 }
 
 mat-card {
@@ -36,14 +36,15 @@ div.flex-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 mat-slide-toggle {
     padding: 10px;
+    
 }
 
-span.tag-span {
-    display: flex;
-    align-items: flex-start;
+mat-card-header.tag-header {
+   padding-bottom: 16px;
 }
 
