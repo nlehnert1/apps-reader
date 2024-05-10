@@ -1,5 +1,5 @@
 <mat-chip-listbox multiple>
     @for (tag of allTags; track tag.tagId) {
-        <mat-chip-option color="accent" (click)="onChipSelect(tag)">{{tag.label}}</mat-chip-option>
+        <mat-chip-option *ngIf="displaySensitiveTags || !tag.isSensitive" color="accent" (click)="onChipSelect(tag)">{{tag.label}}</mat-chip-option>
     }
 </mat-chip-listbox>

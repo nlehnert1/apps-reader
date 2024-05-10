@@ -1,6 +1,7 @@
 ﻿using FluentResults;
 using FluentResults.Extensions.AspNetCore;
 using GeniusReader.WebApp.Features.Series.Commands.AddSeries;
+using GeniusReader.WebApp.Features.Series.Commands.DeleteSeries;
 using GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails;
 using GeniusReader.WebApp.Features.Series.Queries.GetSeriesSummary;
 using GeniusReader.WebApp.Features.Series.Shared;
@@ -31,5 +32,9 @@ namespace GeniusReader.WebApp.Features.Series
         [HttpPost("AddNew")]
         public async Task<ActionResult<SeriesDto>> AddNewSeries([FromBody] AddSeriesCommand request)
              => await _mediator.Send(request).ToActionResult();
+
+        [HttpPost("Delete/{id}")]
+        public async Task<ActionResult> DeleteSeries([FromRoute] DeleteSeriesCommand request)
+            => await _mediator.Send(request).ToActionResult();
     }
 }

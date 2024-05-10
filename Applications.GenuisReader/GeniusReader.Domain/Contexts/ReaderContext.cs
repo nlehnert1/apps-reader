@@ -10,9 +10,13 @@ public class ReaderContext : DbContext
 
     public DbSet<TestTable> TestEntity { get; set; }
     public DbSet<Author> Authors { get; set; }
+    public DbSet<AuthorWork> AuthorWorks { get; set; }
     public DbSet<Series> Series { get; set; }
     public DbSet<Chapter> Chapters { get; set; }
+    public DbSet<SeriesChapter> SeriesChapters { get; set; }
     public DbSet<Tag> Tags { get; set; }
+    public DbSet<SeriesTag> SeriesTags { get; set; }
+    public DbSet<ChapterTag> ChapterTags { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

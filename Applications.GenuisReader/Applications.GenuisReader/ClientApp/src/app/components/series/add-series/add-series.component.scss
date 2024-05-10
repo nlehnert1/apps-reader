@@ -31,3 +31,19 @@ mat-form-field.highlight-my-child > div{
 button#confirm-button {
     margin-left: 12px;
 }
+
+div.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+mat-slide-toggle {
+    padding: 10px;
+}
+
+span.tag-span {
+    display: flex;
+    align-items: flex-start;
+}
+
