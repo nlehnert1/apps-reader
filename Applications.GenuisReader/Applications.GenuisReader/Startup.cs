@@ -4,6 +4,7 @@ using GeniusReader.WebApp.Extensions;
 using GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
+using Sieve.Services;
 using System.Text.Json.Serialization;
 
 namespace GeniusReader.WebApp

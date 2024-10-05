@@ -1,5 +1,6 @@
 ﻿using Applications.GenuisReader;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Sieve.Services;
 
 namespace GeniusReader.WebApp.Extensions
 {
@@ -9,6 +10,7 @@ namespace GeniusReader.WebApp.Extensions
         {
             services.AddOptions();
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+            services.AddScoped<ISieveProcessor, SieveProcessor>();
         }
     }
 }
