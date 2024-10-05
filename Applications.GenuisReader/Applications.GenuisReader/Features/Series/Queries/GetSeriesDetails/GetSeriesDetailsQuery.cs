@@ -19,24 +19,24 @@ namespace GeniusReader.WebApp.Features.Series.Queries.GetSeriesDetails
             }
             public async Task<Result<SeriesDto>> Handle(GetSeriesDetailsQuery request, CancellationToken cancellationToken)
             {
-                var result = _readerContext.Series.Select(s => new SeriesDto
+                var result = _readerContext.Series.Select(series => new SeriesDto
                 {
-                    IsOngoing = s.EndDate == null,
-                    StartDate = s.StartDate,
-                    EndDate = s.EndDate,
-                    Authors = s.Authors.Select(a => new AuthorOfSeriesDto
+                    IsOngoing = series.EndDate == null,
+                    StartDate = series.StartDate,
+                    EndDate = series.EndDate,
+                    Authors = series.Authors.Select(a => new AuthorOfSeriesDto
                     {
                         FirstName = a.FirstName,
                         LastName = a.LastName,
                         AuthorId = a.AuthorId,
                     }).ToList(),
-                    SeriesId = s.SeriesId,
-                    Title = s.Name,
-                    Tags = s.Tags.Select(t => new TagDto
+                    SeriesId = series.SeriesId,
+                    Title = series.Name,
+                    Tags = series.Tags.Select(t => new TagDto
                     {
                         Label = t.Label,
                     }).ToList(),
-                    Chapters = s.Chapters.Select(c => new ChapterDto
+                    Chapters = series.Chapters.Select(c => new ChapterDto
                     {
                         ChapterId = c.ChapterId,
                         Title = c.ChapterTitle,

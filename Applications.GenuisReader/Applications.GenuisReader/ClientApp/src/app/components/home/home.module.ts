@@ -7,9 +7,10 @@ import { SeriesSummaryModule } from "../series/series-summary/series-summary.mod
 import { SeriesDetailsModule } from "../series/series-details/series-details.module";
 import { RouterLink } from "@angular/router";
 import { TagService } from "../../services/tag.service";
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
-    imports: [CommonModule, HttpClientModule, SeriesSummaryModule, SeriesDetailsModule, RouterLink],
+    imports: [CommonModule, HttpClientModule, SeriesSummaryModule, SeriesDetailsModule, RouterLink, MatCardModule],
     declarations: [ HomeComponent ],
     exports: [ HomeComponent ],
     providers: [SeriesService, TagService]

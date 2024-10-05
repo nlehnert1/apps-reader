@@ -33,8 +33,11 @@ namespace GeniusReader.WebApp.Features.Series
         public async Task<ActionResult<SeriesDto>> AddNewSeries([FromBody] AddSeriesCommand request)
              => await _mediator.Send(request).ToActionResult();
 
-        [HttpPost("Delete/{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<ActionResult> DeleteSeries([FromRoute] DeleteSeriesCommand request)
             => await _mediator.Send(request).ToActionResult();
+
+        [HttpGet("Tag/{TagId}")]
+        public async Task<ActionResult<List<>>>
     }
 }
